@@ -8,9 +8,13 @@ export function TasksList() {
     useEffect(() => {
 
         async function loadTasks() {
-            const response = await getAllTasks();
-            console.log(response);
-            setTasks(response.data);
+            try {
+                const response = await getAllTasks();
+                console.log(response);
+                setTasks(response.data);
+            } catch (error) {
+                console.error(`error al cargar la promesa: ${error}`)
+            }
         }
         loadTasks();
     }, [])
