@@ -4,16 +4,17 @@ import axios from 'axios'
 //     return axios.get("http://localhost:8000/tasks/")
 // }
 
-// export const createTask = (task) => {
-//     return axios.post("http://localhost:8000/tasks/", task)
+// export const createTask = (data) => {
+//     return axios.post("http://localhost:8000/tasks/", data)
 // }
 
 const tasksApi = axios.create({
     baseURL: "http://localhost:8000/tasks/",
 });
 
-export const getTask = (id) => { return tasksApi.get(`/${id}/`) };
-export const getAllTasks = () => { return tasksApi.get("/") };
-export const createTask = (task) => { return tasksApi.post("/", task) };
-export const updateTask = (id, task) => { return tasksApi.put(`/${id}/`, task) };
-export const deleteTask = (id) => { return tasksApi.delete(`/${id}/`) } 
+//* ---CRUD---
+export const getTask = (id) => { return tasksApi.get(`/${id}/`) }; // obtener una tarea
+export const getAllTasks = () => { return tasksApi.get("/") }; // obtener todas las tareas (lista)
+export const createTask = (data) => { return tasksApi.post("/", data) }; // crear tarea
+export const updateTask = (id, data) => { return tasksApi.put(`/${id}/`, data) }; // editar tarea
+export const deleteTask = (id) => { return tasksApi.delete(`/${id}/`) } // eliminar tarea

@@ -3,15 +3,12 @@ import { TasksPage } from "./pages/TasksPage.jsx"
 import { TaskFormPage } from "./pages/TaskFormPage.jsx"
 import { Navigation } from "./components/Navigation.jsx";
 import { Toaster } from 'react-hot-toast';
-import { useState } from 'react';
 
 function App() {
-    const [button, switchButton] = useState(true)
-
     return (
         <BrowserRouter>
             <div className='container mx-auto px-3'>
-                <Navigation button={button} switchButton={switchButton} onClick/>
+                <Navigation />
                 <Routes>
                     <Route path="/" element={<Navigate to="/tasks" />}></Route>
                     <Route path="/tasks" element={<TasksPage />}></Route>

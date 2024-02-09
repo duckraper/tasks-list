@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { getAllTasks } from "../apis/tasks.api.js"
 import { TaskCard } from "./TaskCard.jsx"
 
+//* Lista de todas las tarjetas
 export function TasksList() {
     const [tasks, setTasks] = useState([]);
     

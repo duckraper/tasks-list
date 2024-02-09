@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { toast } from 'react-hot-toast'
 
+//* Formulario para CRUD
 export function TaskFormPage() {
     const {
         register,
@@ -43,6 +44,7 @@ export function TaskFormPage() {
     }, [params.id, setValue, navigate])
 
     const onSubmit = handleSubmit(async (data) => {
+        // crear tarea
         if (!params.id) {
             try {
                 await createTask(data);
@@ -51,6 +53,7 @@ export function TaskFormPage() {
                 console.error(`error en la promesa: ${error}`);
                 showToast('Task could not be created', false);
             }
+            // editar tarea
         } else {
             try {
                 await updateTask(params.id, data);
@@ -85,6 +88,7 @@ export function TaskFormPage() {
                             message: "title is too long",
                         }
                     })} />
+                {/* TODO mejorar la UI de la validacion */}
                 {errors.title && <span>title is required</span>}
                 <textarea
                     className='bg-zinc-700 p-3 rounded-lg block w-full mb-3'

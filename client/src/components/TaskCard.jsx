@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
 
+//* Cada tarjeta individual en la lista de tarjetas
 export function TaskCard({ task }) {
     const navigate = useNavigate();
     return (
