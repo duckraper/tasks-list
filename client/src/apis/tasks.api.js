@@ -9,7 +9,7 @@ import axios from 'axios'
 // }
 
 const tasksApi = axios.create({
-    baseURL: "http://localhost:8000/tasks/",
+    baseURL: "http://127.0.0.1:8000/tasks/",
 });
 
 //* ---CRUD---

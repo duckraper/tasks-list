@@ -1,6 +1,7 @@
 # TasksList
-Proyecto que sobre una vista sencilla de una lista de tareas, el programa permite mostrar, editar, agregar y eliminar tareas (CRUD).\
-Para el desarrollo de este proyecto se utilizó Django como backend y React como frontend. Para lograr este sistema, se utilizo una API generada con *DjangoRestFramework*, la cual se conecta con el frontend mediante *Axios*.\
+Proyecto que sobre una vista sencilla de una lista de tareas, el programa permite mostrar, editar, agregar y eliminar tareas (CRUD).
+Para el desarrollo de este proyecto se utilizó Django como backend y React como frontend
+, se utilizo una API generada con *DjangoRestFramework*, la cual se conecta con el frontend mediante *Axios*.
 
 ## Instrucciones de uso
 ### Backend (Django)
@@ -48,7 +49,7 @@ Para el desarrollo de este proyecto se utilizó Django como backend y React como
 
 1. Ve al directorio del proyecto frontend:
     ```bash
-    cd frontend
+    cd client
     ```
 
 2. Instala las dependencias del proyecto:
@@ -61,15 +62,16 @@ Para el desarrollo de este proyecto se utilizó Django como backend y React como
     npm run dev
     ```
 
-4. El servidor frontend estará disponible en `http://localhost:5173`.
+### API documentation
+1. Ve a la URL `http://localhost:8000/docs/` .
 
 ## Tecnologías Utilizadas
 
 ### Backend
-- Django
-- Django Rest Framework
-- CoreAPI
-- django-cors-headers
+- [Django](https://www.djangoproject.com/)
+- [Django Rest Framework](https://www.django-rest-framework.org/)
+- [CoreAPI]
+- [django-cors-headers]
 
 ### Frontend
 - React
