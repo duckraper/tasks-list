@@ -10,7 +10,6 @@ export function TasksList() {
         async function loadTasks() {
             try {
                 const response = await getAllTasks();
-                console.log(response);
                 setTasks(response.data);
             } catch (error) {
                 console.error(`error al cargar la promesa: ${error}`)
@@ -20,7 +19,7 @@ export function TasksList() {
     }, [])
 
     return (
-        <div>
+        <div className="grid grid-cols-3 gap-3">
             {tasks.map((task) => (
                 <TaskCard key={task.id} task={task} />
             ))}

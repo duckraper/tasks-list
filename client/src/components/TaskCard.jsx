@@ -1,11 +1,16 @@
 /* eslint-disable react/prop-types */
+import { useNavigate } from "react-router-dom";
 
-export function TaskCard({task}) {
+export function TaskCard({ task }) {
+    const navigate = useNavigate();
     return (
-        <div>
-            <h2>{task.title}</h2>
-            <p>{task.description}</p>
-            <hr />
+        <div
+            className="bg-zinc-800 hover:bg-zinc-700 p-3 hover:cursor-pointer"
+            onClick={() => {
+                navigate(`/tasks/${task.id}`);
+            }}>
+            <h2 className="font-bold uppercase">{task.title}</h2>
+            <p className="text-slate-300">{task.description}</p>
         </div>
     );
 }
