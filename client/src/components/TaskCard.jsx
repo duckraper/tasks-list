@@ -9,8 +9,8 @@ export function TaskCard({ task }) {
             onClick={() => {
                 navigate(`/tasks/${task.id}`);
             }}>
-            <h2 className="font-bold uppercase">{task.title}</h2>
-            <p className="text-slate-300">{task.description}</p>
+            <h2 className="font-bold uppercase overflow-hidden text-ellipsis">{task.title}</h2>
+            <p className="text-slate-300 overflow-hidden text-ellipsis">{task.description}</p>
         </div>
     );
 }

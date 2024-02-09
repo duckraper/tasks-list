@@ -19,7 +19,7 @@ export function TasksList() {
     }, [])
 
     return (
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid sm:grid-cols-3 lg:grid-cols-4 grid-cols-1 gap-3 truncate overflow-y-scroll">
             {tasks.map((task) => (
                 <TaskCard key={task.id} task={task} />
             ))}
