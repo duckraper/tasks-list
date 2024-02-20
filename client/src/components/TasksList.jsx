@@ -5,9 +5,8 @@ import { TaskCard } from "./TaskCard.jsx"
 //* Lista de todas las tarjetas
 export function TasksList() {
     const [tasks, setTasks] = useState([]);
-    
-    useEffect(() => {
 
+    useEffect(() => {
         async function loadTasks() {
             try {
                 const response = await getAllTasks();

@@ -13,7 +13,7 @@ function App() {
                     <Route path="/" element={<Navigate to="/tasks" />}></Route>
                     <Route path="/tasks" element={<TasksPage />}></Route>
                     <Route path="/tasks-create" element={<TaskFormPage />}></Route>
-                    <Route path="/tasks/:id" element={<TaskFormPage />}></Route>
+                    <Route path="/tasks/:id" element={<TaskFormPage />} />
                 </Routes>
                 <Toaster />
             </div>

@@ -4,11 +4,12 @@ from rest_framework.documentation import include_docs_urls
 from rest_framework_simplejwt.views import TokenRefreshView
 from . import views
 
-routers = routers.DefaultRouter()
-# routers.register(r'', views.TaskView, 'tasks')
+router = routers.DefaultRouter()
+router.register(r'', views.UsersView, basename='users')
 
 urlpatterns = [
-    # path('tasks/', include(routers.urls)), # /tasks/
+    path('users/', include(router.urls)),
+
     path('tasks/', views.TasksView.as_view(), name='tasks'),
     path('tasks/<int:pk>/', views.TaskView.as_view(), name='task'),
 

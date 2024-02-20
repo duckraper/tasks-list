@@ -6,6 +6,7 @@ import { toast } from 'react-hot-toast'
 
 //* Formulario para CRUD
 export function TaskFormPage() {
+    // Importamos el hook useForm de react-hook-form para manejar el estado del formulario
     const {
         register,
         handleSubmit,
@@ -13,6 +14,7 @@ export function TaskFormPage() {
         setValue
     } = useForm();
 
+    // Función para mostrar un toast de éxito o error
     const showToast = (message, success = true) => {
         (success ? toast.success : toast.error)(message, {
             position: 'bottom-right',
@@ -23,10 +25,13 @@ export function TaskFormPage() {
         })
     }
 
+    // Obtenemos los parámetros de la URL
     const params = useParams();
 
+    // Obtenemos la función navigate de react-router-dom para redireccionar
     const navigate = useNavigate();
 
+    // Cargamos los datos de la tarea si estamos en modo edición
     useEffect(() => {
         async function loadTask() {
             if (params.id) {
@@ -43,8 +48,9 @@ export function TaskFormPage() {
         loadTask();
     }, [params.id, setValue, navigate])
 
+    // Función para manejar el envío del formulario
     const onSubmit = handleSubmit(async (data) => {
-        // crear tarea
+        // Crear tarea
         if (!params.id) {
             try {
                 await createTask(data);
@@ -53,7 +59,7 @@ export function TaskFormPage() {
                 console.error(`error en la promesa: ${error}`);
                 showToast('Task could not be created', false);
             }
-            // editar tarea
+        // Editar tarea
         } else {
             try {
                 await updateTask(params.id, data);
@@ -66,6 +72,7 @@ export function TaskFormPage() {
         navigate('/tasks');
     });
 
+    // Función para capitalizar el título al escribirlo
     const capitalizeTitle = (e) => {
         e.target.value = e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1);
     }
@@ -73,13 +80,12 @@ export function TaskFormPage() {
     return (
         <div className='max-w-xl mx-auto'>
             <form onSubmit={onSubmit}>
+                {/* Input para el título */}
                 <input
                     className='bg-zinc-700 p-3 rounded-lg block w-full mb-3'
                     autoFocus
                     type='text'
                     placeholder='title'
-                    // {params.id ?
-                    //     value = {}}
                     {...register("title", {
                         required: true,
                         onChange: capitalizeTitle,
@@ -88,8 +94,9 @@ export function TaskFormPage() {
                             message: "title is too long",
                         }
                     })} />
-                {/* TODO mejorar la UI de la validacion */}
+                {/* Mensaje de error si el título es requerido */}
                 {errors.title && <span>title is required</span>}
+                {/* Textarea para la descripción */}
                 <textarea
                     className='bg-zinc-700 p-3 rounded-lg block w-full mb-3'
                     rows='3'
@@ -101,6 +108,7 @@ export function TaskFormPage() {
                             message: "description is too long",
                         }
                     })} />
+                {/* Botón para guardar el formulario */}
                 <button
                     className='bg-indigo-500 p-3 rounded-md block w-full mt-3'
                     type='submit'>
@@ -108,7 +116,7 @@ export function TaskFormPage() {
                 </button>
             </form>
 
-            {/* en caso de estar editando */}
+            {/* En caso de estar editando, mostramos el botón de eliminar */}
             {params.id && (
                 <div className='flex justify-end'>
                     <button
@@ -129,7 +137,8 @@ export function TaskFormPage() {
                     >
                         Delete
                     </button>
-                </div>)}
+                </div>
+            )}
         </div>
     )
     // TODO implementar la realizacion de tareas, o sea tarea completada
