@@ -11,7 +11,8 @@ urlpatterns = [
     path('users/', include(router.urls)),
 
     path('tasks/', views.TasksView.as_view(), name='tasks'),
-    path('tasks/<int:pk>/', views.TaskView.as_view(), name='task'),
+    path('tasks/<int:pk>/', views.TaskCRUDView.as_view(), name='task'),
+    path('tasks/<int:pk>/complete/', views.CompleteTaskView.as_view(), name='complete_task'),
 
     path('token/', views.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
